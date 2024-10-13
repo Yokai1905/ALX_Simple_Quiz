@@ -1,21 +1,17 @@
+const correctAnswer = "4";
+
 function checkAnswer() {
-    const correctAnswer = "4";
-    
-    const userAnswer = document.querySelector('input[name="quiz"]:checked');
-    
-    const feedback = document.getElementById('feedback');
-    
-    if (userAnswer) {
-        if (userAnswer.value === correctAnswer) {
-            feedback.textContent = "Correct! Well done.";
-            feedback.style.color = "green";
-        } else {
-            feedback.textContent = "That's incorrect. Try again!";
-            feedback.style.color = "red";
-        }
+    const userAnswer = document.querySelector('input[name="quiz"]:checked')?.value;
+
+   if (!userAnswer) {
+        document.getElementById('feedback').textContent = "Please select an answer.";
+        return;
+    }
+
+   if (userAnswer === correctAnswer) {
+        document.getElementById('feedback').textContent = "Correct! Well done.";
     } else {
-        feedback.textContent = "Please select an answer!";
-        feedback.style.color = "orange";
+        document.getElementById('feedback').textContent = "That's incorrect. Try again!";
     }
 }
 
